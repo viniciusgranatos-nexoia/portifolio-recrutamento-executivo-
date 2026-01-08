@@ -1,0 +1,3409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO IA Talentos | Recrutamento Executivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f8fafc;
+            --color-bg-elevated: #ffffff;
+            --color-bg-card: #ffffff;
+            --color-bg-dark: #0f172a;
+            --color-border: #e2e8f0;
+            --color-border-subtle: #f1f5f9;
+            --color-text: #0f2744;
+            --color-text-muted: #64748b;
+            --color-text-subtle: #94a3b8;
+            --color-text-light: #ffffff;
+            --color-accent: #0e7490;
+            --color-accent-hover: #0891b2;
+            --color-accent-muted: rgba(14, 116, 144, 0.1);
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-card: 0 4px 24px rgba(15, 39, 68, 0.08);
+            --shadow-elevated: 0 12px 48px rgba(15, 39, 68, 0.12);
+            --transition-fast: 0.15s ease;
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+            z-index: 1001;
+            transition: width 0.1s linear;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-logo-icon .circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2.5px solid;
+            position: absolute;
+        }
+
+        .nav-logo-icon .circle-1 {
+            border-color: #64748b;
+            left: 0;
+            z-index: 1;
+        }
+
+        .nav-logo-icon .circle-2 {
+            border-color: #22d3ee;
+            left: 14px;
+            z-index: 2;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .nav-logo-text .brand-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-text);
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-logo-text .brand-name .ia {
+            color: var(--color-text);
+        }
+
+        .nav-logo-text .brand-tagline {
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: #22d3ee;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+            background: var(--color-bg-card);
+        }
+
+        .nav-cta {
+            background: var(--color-accent) !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-accent-hover) !important;
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 72px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, var(--color-accent-muted) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            color: var(--color-accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            max-width: 640px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(14, 116, 144, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--color-bg-card);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-bg-elevated);
+            border-color: var(--color-accent);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-text-muted);
+            padding: 12px 20px;
+        }
+
+        .btn-ghost:hover {
+            color: var(--color-text);
+            background: var(--color-bg-card);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.125rem;
+            max-width: 600px;
+        }
+
+        /* Fit Check Section */
+        .fit-check {
+            background: var(--color-bg-elevated);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .fit-column h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .fit-column h3 svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .fit-yes h3 { color: var(--color-success); }
+        .fit-no h3 { color: var(--color-text-muted); }
+
+        .fit-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fit-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+        }
+
+        .fit-list li svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .fit-yes .fit-list li svg { color: var(--color-success); }
+        .fit-no .fit-list li svg { color: var(--color-text-subtle); }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-elevated) 100%);
+        }
+
+        .quiz-container {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .quiz-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .quiz-header p {
+            color: var(--color-text-muted);
+        }
+
+        .quiz-progress {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .quiz-progress-step {
+            flex: 1;
+            height: 4px;
+            background: var(--color-border);
+            border-radius: 2px;
+            transition: background var(--transition-smooth);
+        }
+
+        .quiz-progress-step.active {
+            background: var(--color-accent);
+        }
+
+        .quiz-question {
+            display: none;
+        }
+
+        .quiz-question.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-question h3 {
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .quiz-option:hover {
+            border-color: var(--color-accent);
+            background: var(--color-accent-muted);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--color-accent);
+            background: var(--color-accent-muted);
+        }
+
+        .quiz-option-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+
+        .quiz-option.selected .quiz-option-radio {
+            border-color: var(--color-accent);
+        }
+
+        .quiz-option.selected .quiz-option-radio::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .quiz-option span {
+            font-size: 0.9375rem;
+        }
+
+        .quiz-result {
+            display: none;
+            text-align: center;
+        }
+
+        .quiz-result.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .quiz-result-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-accent-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .quiz-result-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-accent);
+        }
+
+        .quiz-result h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .quiz-result-box {
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .quiz-result-box h4 {
+            font-size: 0.875rem;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quiz-result-box p {
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+        }
+
+        .quiz-restart {
+            margin-top: 24px;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            cursor: pointer;
+            text-decoration: underline;
+            background: none;
+            border: none;
+        }
+
+        .quiz-restart:hover {
+            color: var(--color-text);
+        }
+
+        /* Offer Cards */
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .offer-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offer-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .offer-card-badge {
+            display: inline-block;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-accent);
+            background: var(--color-accent-muted);
+            padding: 6px 12px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .offer-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            margin-bottom: 12px;
+        }
+
+        .offer-card-desc {
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .offer-card-features {
+            list-style: none;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .offer-card-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        .offer-card-features li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .offer-card-meta {
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .offer-card-meta span {
+            font-size: 0.8125rem;
+            color: var(--color-text-subtle);
+        }
+
+        .offer-card-meta strong {
+            font-size: 1.125rem;
+            color: var(--color-text);
+        }
+
+        /* Deliverables */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .deliverable-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 24px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .deliverable-item:hover {
+            border-color: var(--color-accent);
+        }
+
+        .deliverable-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent-muted);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .deliverable-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-accent);
+        }
+
+        .deliverable-content h4 {
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .deliverable-content p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--color-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 32px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background: var(--color-bg);
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item:first-child .timeline-dot,
+        .timeline-item:last-child .timeline-dot {
+            background: var(--color-accent);
+        }
+
+        .timeline-step {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .timeline-desc {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Proof Section */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .case-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+
+        .case-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-text-subtle);
+            background: var(--color-bg-elevated);
+            padding: 6px 12px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .case-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            margin-bottom: 16px;
+        }
+
+        .case-card p {
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+            margin-bottom: 20px;
+        }
+
+        .case-metrics {
+            display: flex;
+            gap: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .case-metric {
+            text-align: center;
+        }
+
+        .case-metric-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .case-metric-label {
+            font-size: 0.75rem;
+            color: var(--color-text-subtle);
+        }
+
+        /* Risk Reduction */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .risk-item {
+            background: var(--color-bg-elevated);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .risk-item svg {
+            width: 32px;
+            height: 32px;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+        }
+
+        .risk-item h4 {
+            font-size: 0.9375rem;
+            margin-bottom: 8px;
+        }
+
+        .risk-item p {
+            font-size: 0.8125rem;
+            color: var(--color-text-muted);
+        }
+
+        /* FAQ Accordion */
+        .faq-list {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            font-family: var(--font-body);
+            transition: color var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: var(--color-accent);
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-text-muted);
+            transition: transform var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-smooth);
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            color: var(--color-text-muted);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--color-bg);
+        }
+
+        .cta-box {
+            background: var(--color-bg-dark);
+            border: none;
+            border-radius: var(--radius-lg);
+            padding: 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+
+        .cta-box h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .cta-box p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .cta-secondary-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .cta-secondary-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color var(--transition-fast);
+        }
+
+        .cta-secondary-links a:hover {
+            color: #ffffff;
+        }
+
+        .cta-secondary-links svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--color-border-subtle);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-brand .nav-logo {
+            font-size: 1.125rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.8125rem;
+            color: var(--color-text-subtle);
+            font-style: italic;
+        }
+
+        .footer-legal {
+            text-align: right;
+        }
+
+        .footer-legal p {
+            font-size: 0.75rem;
+            color: var(--color-text-subtle);
+            margin-bottom: 4px;
+        }
+
+        .footer-badges {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 12px;
+        }
+
+        .footer-badge {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-subtle);
+            background: var(--color-bg-elevated);
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+        }
+
+        .footer-badge-clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .footer-badge-clickable:hover {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 116, 144, 0.3);
+        }
+
+        /* Copy Button Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-accent);
+            color: var(--color-text);
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            z-index: 1002;
+            opacity: 0;
+            transition: all var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast svg {
+            width: 18px;
+            height: 18px;
+            color: var(--color-success);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .offer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--color-bg);
+                border-bottom: 1px solid var(--color-border);
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-mobile-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .fit-check {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+
+            .quiz-container {
+                padding: 32px 24px;
+            }
+
+            .deliverables-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 40px 24px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                text-align: center;
+            }
+
+            .footer-badges {
+                justify-content: center;
+            }
+        }
+
+        /* Accessibility */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* Hosting Instructions */
+        .hosting-section {
+            background: var(--color-bg-elevated);
+            padding: 48px;
+            margin: 48px 0;
+            border-radius: var(--radius-lg);
+        }
+
+        .hosting-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+        }
+
+        .hosting-section ol {
+            padding-left: 24px;
+            color: var(--color-text-muted);
+        }
+
+        .hosting-section li {
+            margin-bottom: 12px;
+        }
+
+        .hosting-section code {
+            background: var(--color-bg);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <span class="circle circle-1"></span>
+                    <span class="circle circle-2"></span>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="brand-name">NEXO <span class="ia">IA</span></span>
+                    <span class="brand-tagline">Talentos</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#visao-rapida">Visão Rápida</a></li>
+                <li><a href="#oferta">Oferta</a></li>
+                <li><a href="#metodo">Método</a></li>
+                <li><a href="#entregaveis">Entregáveis</a></li>
+                <li><a href="#provas">Provas</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="nav-cta">Agendar</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="visao-rapida">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Recrutamento Executivo com IA responsável
+                    </div>
+                    <h1>Contrate líderes que <span>ficam e entregam</span>. Sem apostas cegas.</h1>
+                    <p class="hero-subtitle">
+                        Combinamos inteligência artificial com avaliação humana profunda para encontrar executivos alinhados à sua cultura, propósito e estratégia. Método proprietário. Governança transparente. Decisões suas.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="btn btn-primary">
+                            Agendar diagnóstico (20 min)
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/5531924147491" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                            Pedir proposta
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fit Check Section -->
+        <section id="fit-check">
+            <div class="container">
+                <div class="fit-check">
+                    <div class="fit-column fit-yes">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                            É para você se...
+                        </h3>
+                        <ul class="fit-list">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Precisa de um executivo que entenda e viva a cultura da empresa
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Já teve contratações que não deram certo nos primeiros 12 meses
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Quer transparência no processo e indicadores claros de risco
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Valoriza confidencialidade e governança de dados (LGPD)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Busca um parceiro consultivo, não só um "caça-currículos"
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fit-column fit-no">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="15" y1="9" x2="9" y2="15"/>
+                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            </svg>
+                            Talvez não seja o momento se...
+                        </h3>
+                        <ul class="fit-list">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Precisa de volume alto de vagas operacionais (temos foco em liderança)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Quer apenas "currículos rápidos" sem análise de fit cultural
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                A decisão de contratação é 100% baseada em preço
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Não há abertura para revisar o perfil da vaga em conjunto
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="quiz-section" id="triagem">
+            <div class="container">
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <h2>Descubra em 30 segundos</h2>
+                        <p>Responda 4 perguntas e receba uma recomendação personalizada</p>
+                    </div>
+                    
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-step active" data-step="1"></div>
+                        <div class="quiz-progress-step" data-step="2"></div>
+                        <div class="quiz-progress-step" data-step="3"></div>
+                        <div class="quiz-progress-step" data-step="4"></div>
+                    </div>
+
+                    <div id="quizQuestions">
+                        <!-- Question 1 -->
+                        <div class="quiz-question active" data-question="1">
+                            <h3>Qual o nível da posição que você precisa preencher?</h3>
+                            <div class="quiz-options">
+                                <label class="quiz-option" data-value="lider">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Líder de equipe / Supervisor</span>
+                                </label>
+                                <label class="quiz-option" data-value="coordenador">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Coordenador</span>
+                                </label>
+                                <label class="quiz-option" data-value="gerente">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Gerente</span>
+                                </label>
+                                <label class="quiz-option" data-value="gerente-senior">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Gerente Sênior</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="quiz-question" data-question="2">
+                            <h3>Qual a urgência do preenchimento?</h3>
+                            <div class="quiz-options">
+                                <label class="quiz-option" data-value="urgente">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Urgente – preciso em até 30 dias</span>
+                                </label>
+                                <label class="quiz-option" data-value="moderada">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Moderada – entre 30 e 60 dias</span>
+                                </label>
+                                <label class="quiz-option" data-value="planejada">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Planejada – mais de 60 dias</span>
+                                </label>
+                                <label class="quiz-option" data-value="mapeamento">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Só quero mapear o mercado por agora</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="quiz-question" data-question="3">
+                            <h3>A posição exige confidencialidade?</h3>
+                            <div class="quiz-options">
+                                <label class="quiz-option" data-value="alta">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Sim, é uma busca sigilosa (substituição ou reestruturação)</span>
+                                </label>
+                                <label class="quiz-option" data-value="parcial">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Parcialmente – podemos divulgar com restrições</span>
+                                </label>
+                                <label class="quiz-option" data-value="baixa">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Não, pode ser uma busca aberta</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="quiz-question" data-question="4">
+                            <h3>Já tiveram contratações de liderança que não deram certo nos últimos 2 anos?</h3>
+                            <div class="quiz-options">
+                                <label class="quiz-option" data-value="sim">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Sim, mais de uma vez</span>
+                                </label>
+                                <label class="quiz-option" data-value="uma">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Sim, uma vez</span>
+                                </label>
+                                <label class="quiz-option" data-value="nao">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Não, todas foram bem-sucedidas</span>
+                                </label>
+                                <label class="quiz-option" data-value="primeira">
+                                    <span class="quiz-option-radio"></span>
+                                    <span>Esta será nossa primeira contratação nesse nível</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result -->
+                    <div class="quiz-result" id="quizResult">
+                        <div class="quiz-result-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <h3 id="resultTitle">Sua recomendação</h3>
+                        
+                        <div class="quiz-result-box">
+                            <h4>Formato recomendado</h4>
+                            <p id="resultFormat">...</p>
+                        </div>
+                        
+                        <div class="quiz-result-box">
+                            <h4>Nível de urgência</h4>
+                            <p id="resultUrgency">...</p>
+                        </div>
+                        
+                        <div class="quiz-result-box">
+                            <h4>Próximos passos</h4>
+                            <p id="resultSteps">...</p>
+                        </div>
+
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="btn btn-primary" style="margin-top: 24px;">
+                            Agendar diagnóstico gratuito
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        
+                        <button class="quiz-restart" onclick="restartQuiz()">Refazer triagem</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offer Section -->
+        <section id="oferta">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Formatos de serviço</span>
+                    <h2 class="section-title">Escolha o modelo ideal para sua necessidade</h2>
+                    <p class="section-subtitle">Cada formato foi desenhado para um contexto específico. Todos incluem nosso método proprietário e governança de IA.</p>
+                </div>
+
+                <div class="offer-grid">
+                    <!-- Card 1 -->
+                    <div class="offer-card">
+                        <span class="offer-card-badge">Entrada</span>
+                        <h3>Liderança Operacional</h3>
+                        <p class="offer-card-desc">Para Líderes de equipe e Supervisores. Foco em identificar profissionais com potencial de crescimento e fit cultural.</p>
+                        <ul class="offer-card-features">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Hunting ativo e direcionado
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Análise de fit cultural (PCFI)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Shortlist comentada (3-5 finalistas)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Acompanhamento pós-contratação
+                            </li>
+                        </ul>
+                        <div class="offer-card-meta">
+                            <span>Prazo típico: [15–20 DIAS]</span>
+                            <strong>Investimento: [CONSULTAR]</strong>
+                        </div>
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="btn btn-secondary" style="margin-top: 16px; width: 100%; justify-content: center;">
+                            Saber mais
+                        </a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="offer-card">
+                        <span class="offer-card-badge">Mais procurado</span>
+                        <h3>Coordenação & Gerência</h3>
+                        <p class="offer-card-desc">Para Coordenadores e Gerentes. Equilibra profundidade de análise com agilidade no processo.</p>
+                        <ul class="offer-card-features">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Shortlist comentada (3-5 finalistas)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Entrevistas estruturadas + scorecards
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Análise de fit cultural (PCFI)
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Onboarding estruturado
+                            </li>
+                        </ul>
+                        <div class="offer-card-meta">
+                            <span>Prazo típico: [15–20 DIAS]</span>
+                            <strong>Investimento: [CONSULTAR]</strong>
+                        </div>
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="btn btn-primary" style="margin-top: 16px; width: 100%; justify-content: center;">
+                            Solicitar proposta
+                        </a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="offer-card">
+                        <span class="offer-card-badge">Premium</span>
+                        <h3>Gerência Sênior</h3>
+                        <p class="offer-card-desc">Para Gerentes Sênior e posições estratégicas. Processo completo com governança reforçada e análise aprofundada.</p>
+                        <ul class="offer-card-features">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Hunting estratégico e discreto
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Laudo executivo com PCFI e RRI
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Entrevistas estruturadas + scorecards
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Acompanhamento 30/60/90 dias
+                            </li>
+                        </ul>
+                        <div class="offer-card-meta">
+                            <span>Prazo típico: [15–20 DIAS]</span>
+                            <strong>Investimento: [CONSULTAR]</strong>
+                        </div>
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="btn btn-secondary" style="margin-top: 16px; width: 100%; justify-content: center;">
+                            Saber mais
+                        </a>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="btn btn-ghost" onclick="copyB2BSummary()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Copiar resumo para encaminhar internamente
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deliverables Section -->
+        <section id="entregaveis" style="background: var(--color-bg-elevated);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Entregáveis</span>
+                    <h2 class="section-title">O que você recebe</h2>
+                    <p class="section-subtitle">Documentos, relatórios e acompanhamento que dão clareza à decisão.</p>
+                </div>
+
+                <div class="deliverables-grid">
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4>Perfil da Vaga Orientado</h4>
+                            <p>Documento que alinha competências técnicas, propósito da posição e cultura da empresa. Base para todo o processo.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4>Roteiros e Scorecards</h4>
+                            <p>Guias estruturados para entrevistas com critérios objetivos. Reduz vieses e padroniza avaliação.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4>Shortlist Comentada</h4>
+                            <p>De 3 a 5 finalistas com análise individual: trajetória, pontos fortes, riscos e fit cultural.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20V10"/>
+                                <path d="M18 20V4"/>
+                                <path d="M6 20v-4"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4>Laudo Executivo com PCFI e RRI + Relatório Assessment DISC</h4>
+                            <p>Relatório com índices de fit cultural (0-100) e risco de retenção (0-100). Os dois últimos candidatos finalistas recebem assessment DISC completo. Dados para decisão, não achismo.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4>Onboarding 30/60/90</h4>
+                            <p>Plano de integração com check-ins estruturados de coaching de performance para garantir que a contratação dê certo de verdade. No final, você recebe o relatório completo do acompanhamento.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item">
+                        <div class="deliverable-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4>Governança e Rastreabilidade</h4>
+                            <p>Registro de todas as decisões e uso de IA. LGPD compliance, transparência total.</p>
+                        </div>
+                    </div>
+
+                    <div class="deliverable-item" style="grid-column: 1 / -1; background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%); color: white;">
+                        <div class="deliverable-icon" style="background: rgba(255,255,255,0.2);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </div>
+                        <div class="deliverable-content">
+                            <h4 style="color: white;">📄 Veja um Modelo Real de Relatório</h4>
+                            <p style="color: rgba(255,255,255,0.9);">Conheça o formato completo do nosso relatório executivo: shortlist comentada, scorecards e parecer de seleção com todo o histórico do processo.</p>
+                            <a href="https://viniciusgranatos-nexoia.github.io/recrutamentoexecutivo/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 20px; background: white; color: #0e7490; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s;">
+                                Ver modelo do relatório
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process/Method Section -->
+        <section id="metodo">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Processo</span>
+                    <h2 class="section-title">Como trabalhamos: 7 etapas</h2>
+                    <p class="section-subtitle">Método HeadLeads IA: tecnologia para acelerar, humanos para decidir.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 1</span>
+                        <h4 class="timeline-title">Kickoff e Imersão</h4>
+                        <p class="timeline-desc">Reunião para entender contexto, cultura, desafios e expectativas. Definimos o DNA da vaga.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 2</span>
+                        <h4 class="timeline-title">Construção do Perfil-Alvo</h4>
+                        <p class="timeline-desc">Documento estruturado com competências, propósito, cultura e indicadores de sucesso.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 3</span>
+                        <h4 class="timeline-title">Hunting e Triagem com IA</h4>
+                        <p class="timeline-desc">Mapeamento de mercado com auxílio de IA. Bias Shield ativo. Humano revisa cada etapa.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 4</span>
+                        <h4 class="timeline-title">Entrevistas Estruturadas</h4>
+                        <p class="timeline-desc">Avaliação profunda com roteiros padronizados e scorecards objetivos.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 5</span>
+                        <h4 class="timeline-title">Laudos e Shortlist</h4>
+                        <p class="timeline-desc">Relatório executivo com PCFI e RRI. Você recebe dados, não palpites.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 6</span>
+                        <h4 class="timeline-title">Comitê de Decisão</h4>
+                        <p class="timeline-desc">Facilitamos a apresentação aos stakeholders e apoiamos a tomada de decisão.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <span class="timeline-step">Etapa 7</span>
+                        <h4 class="timeline-title">Oferta + Onboarding</h4>
+                        <p class="timeline-desc">Acompanhamos a negociação e estruturamos o plano 30/60/90 com check-ins.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proof Section -->
+        <section id="provas" style="background: var(--color-bg-elevated);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Prova</span>
+                    <h2 class="section-title">Resultados que ilustram o método</h2>
+                </div>
+
+                <div class="proof-grid">
+                    <div class="case-card">
+                        <span class="case-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            </svg>
+                            Caso Real • Cliente Confidencial
+                        </span>
+                        <h4>Gerente Sênior de Operações – Indústria</h4>
+                        <p>Empresa em expansão buscava um gerente sênior que unisse visão estratégica com execução operacional. Após 2 tentativas internas sem sucesso, encontramos o perfil ideal em 18 dias.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <div class="case-metric-value">92</div>
+                                <div class="case-metric-label">PCFI Score</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="case-metric-value">28</div>
+                                <div class="case-metric-label">RRI (baixo risco)</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="case-metric-value">18d</div>
+                                <div class="case-metric-label">Time-to-hire</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-card">
+                        <span class="case-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            </svg>
+                            Caso Real • Cliente Confidencial
+                        </span>
+                        <h4>Coordenador de Projetos – Tecnologia</h4>
+                        <p>Scale-up precisava de um coordenador que organizasse a área de projetos e trouxesse metodologia ágil. Perfil técnico com habilidade de gestão de pessoas, encontrado em 16 dias.</p>
+                        <div class="case-metrics">
+                            <div class="case-metric">
+                                <div class="case-metric-value">88</div>
+                                <div class="case-metric-label">PCFI Score</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="case-metric-value">22</div>
+                                <div class="case-metric-label">RRI (baixo risco)</div>
+                            </div>
+                            <div class="case-metric">
+                                <div class="case-metric-value">16d</div>
+                                <div class="case-metric-label">Time-to-hire</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risk-grid">
+                    <div class="risk-item" onclick="openModal('pcfiModal')" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <h4>PCFI & RRI</h4>
+                        <p>Índices proprietários que quantificam fit cultural e risco de turnover. Dados, não achismo.</p>
+                        <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 13px; color: #0e7490; font-weight: 500;">
+                            Clique para entender
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
+                        </span>
+                    </div>
+
+                    <div class="risk-item" onclick="openModal('biasModal')" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <h4>Bias Shield</h4>
+                        <p>Revisão de linguagem e critérios para reduzir vieses inconscientes no processo.</p>
+                        <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 13px; color: #0e7490; font-weight: 500;">
+                            Clique para entender
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
+                        </span>
+                    </div>
+
+                    <div class="risk-item" onclick="openModal('humanModal')" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <polyline points="17 11 19 13 23 9"/>
+                        </svg>
+                        <h4>Checagem Humana</h4>
+                        <p>Toda saída de IA é revisada por especialista. Nenhuma decisão é 100% automatizada.</p>
+                        <span style="display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 13px; color: #0e7490; font-weight: 500;">
+                            Clique para entender
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 18l6-6-6-6"/></svg>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Modal PCFI & RRI -->
+                <div id="pcfiModal" class="concept-modal" onclick="if(event.target === this) closeModal('pcfiModal')">
+                    <div class="concept-modal-content">
+                        <button class="concept-modal-close" onclick="closeModal('pcfiModal')">&times;</button>
+                        
+                        <div class="concept-modal-header">
+                            <div class="concept-modal-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="32" height="32">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 style="margin: 0; color: #0f2744;">PCFI & RRI</h2>
+                                <p style="margin: 4px 0 0; color: #64748b; font-size: 14px;">Indicadores proprietários do método HeadLeads IA</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-modal-body">
+                            <div class="concept-section">
+                                <h3>🔤 O que significam as siglas?</h3>
+                                <div class="concept-card">
+                                    <strong>PCFI — Probabilistic Cultural Fit Index</strong>
+                                    <p>Em português: <em>Índice Probabilístico de Compatibilidade Cultural</em></p>
+                                </div>
+                                <div class="concept-card">
+                                    <strong>RRI — Retention Risk Index</strong>
+                                    <p>Em português: <em>Índice de Risco de Retenção</em></p>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>🎯 Para que servem?</h3>
+                                <p><strong>PCFI</strong> mede a probabilidade de um candidato se adaptar e prosperar na cultura da sua empresa. Considera valores, estilo de trabalho, comunicação e ambiente.</p>
+                                <p><strong>RRI</strong> estima o risco de turnover nos primeiros 12 meses. Identifica sinais de alerta antes da contratação: histórico de permanência, motivações, expectativas vs. realidade da vaga.</p>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>💡 Por que usar?</h3>
+                                <p>Contratações erradas custam de <strong>1,5x a 3x o salário anual</strong> do profissional (recrutamento, treinamento, produtividade perdida, nova busca). O PCFI e RRI transformam "achismo" em dados para decisão, reduzindo significativamente esse risco.</p>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>📊 Exemplo Prático</h3>
+                                <div class="concept-example">
+                                    <div class="example-scenario">
+                                        <strong>Cenário:</strong> Empresa com cultura de autonomia e flexibilidade avalia 2 finalistas para Gerente.
+                                    </div>
+                                    <div class="example-comparison">
+                                        <div class="example-candidate">
+                                            <span class="candidate-name">Candidato A</span>
+                                            <div class="candidate-scores">
+                                                <div class="score-item good">
+                                                    <span class="score-label">PCFI</span>
+                                                    <span class="score-value">87</span>
+                                                </div>
+                                                <div class="score-item good">
+                                                    <span class="score-label">RRI</span>
+                                                    <span class="score-value">23</span>
+                                                </div>
+                                            </div>
+                                            <p class="candidate-insight">Alta compatibilidade cultural, baixo risco de saída. Histórico de 4+ anos em empresas similares.</p>
+                                        </div>
+                                        <div class="example-candidate">
+                                            <span class="candidate-name">Candidato B</span>
+                                            <div class="candidate-scores">
+                                                <div class="score-item warning">
+                                                    <span class="score-label">PCFI</span>
+                                                    <span class="score-value">61</span>
+                                                </div>
+                                                <div class="score-item danger">
+                                                    <span class="score-label">RRI</span>
+                                                    <span class="score-value">68</span>
+                                                </div>
+                                            </div>
+                                            <p class="candidate-insight">Veio de ambiente hierárquico rígido. 3 trocas de emprego em 4 anos. Alerta de adaptação.</p>
+                                        </div>
+                                    </div>
+                                    <div class="example-result">
+                                        <strong>Decisão informada:</strong> Candidato A contratado. Após 12 meses: promoção e engajamento alto. Candidato B teria sido um risco significativo.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>📐 Como interpretamos os índices</h3>
+                                <div class="score-guide">
+                                    <div class="guide-item">
+                                        <strong>PCFI (0-100)</strong>
+                                        <div class="guide-scale">
+                                            <span class="scale-item danger">0-50: Baixa compatibilidade</span>
+                                            <span class="scale-item warning">51-70: Atenção necessária</span>
+                                            <span class="scale-item good">71-100: Alta compatibilidade</span>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <strong>RRI (0-100)</strong>
+                                        <div class="guide-scale">
+                                            <span class="scale-item good">0-30: Baixo risco</span>
+                                            <span class="scale-item warning">31-50: Risco moderado</span>
+                                            <span class="scale-item danger">51-100: Alto risco</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-formula">
+                                <h4>Fórmulas Base</h4>
+                                <p><strong>PCFI</strong> = Σ(Wᵢ × Vᵢ × Cᵢ) / Σ(Wᵢ) × 100</p>
+                                <p style="font-size: 11px; color: #64748b;">Onde: W = peso do fator cultural, V = valor do candidato, C = correlação com cultura da empresa</p>
+                                <p style="margin-top: 12px;"><strong>RRI</strong> = α(H) + β(M) + γ(E) + δ(G)</p>
+                                <p style="font-size: 11px; color: #64748b;">Onde: H = histórico de permanência, M = alinhamento motivacional, E = expectativas, G = gaps identificados. α, β, γ, δ = pesos calibrados por segmento.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Bias Shield -->
+                <div id="biasModal" class="concept-modal" onclick="if(event.target === this) closeModal('biasModal')">
+                    <div class="concept-modal-content">
+                        <button class="concept-modal-close" onclick="closeModal('biasModal')">&times;</button>
+                        
+                        <div class="concept-modal-header">
+                            <div class="concept-modal-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="32" height="32">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 style="margin: 0; color: #0f2744;">Bias Shield</h2>
+                                <p style="margin: 4px 0 0; color: #64748b; font-size: 14px;">Escudo Contra Vieses — Proteção em todas as etapas</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-modal-body">
+                            <div class="concept-section">
+                                <h3>🔤 O que significa?</h3>
+                                <div class="concept-card">
+                                    <strong>Bias Shield — Escudo Contra Vieses</strong>
+                                    <p>Sistema de revisão e proteção que identifica e neutraliza vieses inconscientes em todas as etapas do processo seletivo.</p>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>🧠 O que são vieses inconscientes?</h3>
+                                <p>Vieses são atalhos mentais que nosso cérebro usa para tomar decisões rápidas. Em recrutamento, podem nos levar a:</p>
+                                <ul style="margin: 12px 0; padding-left: 20px; color: #475569;">
+                                    <li><strong>Viés de afinidade:</strong> Preferir candidatos parecidos conosco</li>
+                                    <li><strong>Efeito halo:</strong> Uma característica positiva influencia toda a avaliação</li>
+                                    <li><strong>Viés de confirmação:</strong> Buscar informações que confirmem nossa primeira impressão</li>
+                                    <li><strong>Viés de gênero/idade/origem:</strong> Julgamentos baseados em estereótipos</li>
+                                </ul>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>🛡️ Como o Bias Shield funciona?</h3>
+                                <div class="shield-layers">
+                                    <div class="shield-layer">
+                                        <span class="layer-number">1</span>
+                                        <div class="layer-content">
+                                            <strong>Revisão de Job Descriptions</strong>
+                                            <p>Analisa linguagem e remove termos que afastam candidatos qualificados (ex: "rockstar", "jovem e dinâmico", linguagem de gênero).</p>
+                                        </div>
+                                    </div>
+                                    <div class="shield-layer">
+                                        <span class="layer-number">2</span>
+                                        <div class="layer-content">
+                                            <strong>Scorecards Estruturados</strong>
+                                            <p>Critérios objetivos definidos ANTES das entrevistas. Todos os candidatos avaliados pelos mesmos parâmetros.</p>
+                                        </div>
+                                    </div>
+                                    <div class="shield-layer">
+                                        <span class="layer-number">3</span>
+                                        <div class="layer-content">
+                                            <strong>Revisão de Comunicações</strong>
+                                            <p>Toda comunicação com candidatos passa por checagem de linguagem inclusiva e profissional.</p>
+                                        </div>
+                                    </div>
+                                    <div class="shield-layer">
+                                        <span class="layer-number">4</span>
+                                        <div class="layer-content">
+                                            <strong>Auditoria de Decisões</strong>
+                                            <p>Registro de justificativas para aprovação/reprovação. Identificação de padrões problemáticos.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>📊 Exemplo Prático</h3>
+                                <div class="concept-example">
+                                    <div class="example-scenario">
+                                        <strong>Cenário:</strong> Vaga de Coordenador de Projetos em empresa de tecnologia.
+                                    </div>
+                                    <div class="bias-example">
+                                        <div class="bias-before">
+                                            <span class="bias-label">❌ ANTES do Bias Shield</span>
+                                            <p class="bias-text">"Buscamos profissional jovem e dinâmico, com energia para acompanhar o ritmo acelerado da startup. Deve ser um verdadeiro ninja de projetos."</p>
+                                            <span class="bias-problem">Problema: Linguagem exclui profissionais experientes e pode afastar mulheres.</span>
+                                        </div>
+                                        <div class="bias-after">
+                                            <span class="bias-label">✅ DEPOIS do Bias Shield</span>
+                                            <p class="bias-text">"Buscamos profissional com experiência em gestão de projetos ágeis, capacidade de priorização e comunicação clara com stakeholders."</p>
+                                            <span class="bias-solution">Resultado: Foco em competências reais. Pool de candidatos 40% maior e mais diverso.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>💡 Por que é importante?</h3>
+                                <p>Estudos mostram que equipes diversas são <strong>35% mais propensas a superar metas</strong>. O Bias Shield não é sobre "ser politicamente correto" — é sobre <strong>não perder talentos qualificados</strong> por filtros inconscientes que nada têm a ver com competência.</p>
+                            </div>
+
+                            <div class="concept-formula">
+                                <h4>Métricas de Efetividade</h4>
+                                <p><strong>Taxa de Cobertura</strong> = (Etapas com Bias Shield ativo / Total de etapas) × 100</p>
+                                <p style="font-size: 11px; color: #64748b;">Meta: 100% de cobertura em todas as etapas do processo</p>
+                                <p style="margin-top: 12px;"><strong>Índice de Diversidade do Funil</strong> = Variância demográfica em cada etapa</p>
+                                <p style="font-size: 11px; color: #64748b;">Monitoramos se o funil mantém diversidade ou se há "vazamentos" em etapas específicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Checagem Humana -->
+                <div id="humanModal" class="concept-modal" onclick="if(event.target === this) closeModal('humanModal')">
+                    <div class="concept-modal-content">
+                        <button class="concept-modal-close" onclick="closeModal('humanModal')">&times;</button>
+                        
+                        <div class="concept-modal-header">
+                            <div class="concept-modal-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="32" height="32">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="8.5" cy="7" r="4"/>
+                                    <polyline points="17 11 19 13 23 9"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h2 style="margin: 0; color: #0f2744;">Checagem Humana</h2>
+                                <p style="margin: 4px 0 0; color: #64748b; font-size: 14px;">Human-in-the-Loop — IA responsável com supervisão especialista</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-modal-body">
+                            <div class="concept-section">
+                                <h3>🔤 O conceito</h3>
+                                <div class="concept-card">
+                                    <strong>Human-in-the-Loop (HITL)</strong>
+                                    <p>Em português: <em>Humano no Circuito</em> — Princípio de IA responsável onde toda decisão automatizada passa por revisão e validação humana antes de ser executada.</p>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>⚖️ Por que não automatizamos 100%?</h3>
+                                <p>IA é excelente para:</p>
+                                <ul style="margin: 8px 0; padding-left: 20px; color: #475569;">
+                                    <li>Processar grandes volumes de dados rapidamente</li>
+                                    <li>Identificar padrões em currículos</li>
+                                    <li>Sugerir candidatos com base em critérios objetivos</li>
+                                    <li>Gerar rascunhos de comunicações</li>
+                                </ul>
+                                <p style="margin-top: 12px;">Mas IA <strong>não deve</strong> decidir sozinha sobre:</p>
+                                <ul style="margin: 8px 0; padding-left: 20px; color: #475569;">
+                                    <li>Quem avança ou não no processo</li>
+                                    <li>Avaliação final de fit cultural</li>
+                                    <li>Comunicações sensíveis com candidatos</li>
+                                    <li>Recomendação final de contratação</li>
+                                </ul>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>🔄 Como funciona na prática?</h3>
+                                <div class="hitl-flow">
+                                    <div class="hitl-step">
+                                        <div class="hitl-icon">🤖</div>
+                                        <div class="hitl-content">
+                                            <strong>IA processa</strong>
+                                            <p>Analisa currículos, gera scores, sugere ranking</p>
+                                        </div>
+                                    </div>
+                                    <div class="hitl-arrow">→</div>
+                                    <div class="hitl-step">
+                                        <div class="hitl-icon">👤</div>
+                                        <div class="hitl-content">
+                                            <strong>Humano revisa</strong>
+                                            <p>Especialista valida, ajusta, aprova ou reprova</p>
+                                        </div>
+                                    </div>
+                                    <div class="hitl-arrow">→</div>
+                                    <div class="hitl-step">
+                                        <div class="hitl-icon">✅</div>
+                                        <div class="hitl-content">
+                                            <strong>Ação executada</strong>
+                                            <p>Só após validação humana</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>📊 Exemplo Prático</h3>
+                                <div class="concept-example">
+                                    <div class="example-scenario">
+                                        <strong>Cenário:</strong> Triagem inicial para vaga de Gerente Sênior com 87 candidatos.
+                                    </div>
+                                    <div class="hitl-example">
+                                        <div class="hitl-example-step">
+                                            <span class="step-badge">Etapa 1 — IA</span>
+                                            <p>Sistema analisa 87 currículos em 3 minutos. Gera ranking e destaca 15 candidatos com maior aderência aos critérios.</p>
+                                        </div>
+                                        <div class="hitl-example-step">
+                                            <span class="step-badge">Etapa 2 — Humano</span>
+                                            <p>Especialista revisa os 15 + amostra aleatória de 10 "reprovados". Identifica 2 candidatos qualificados que a IA subestimou (experiência em setor correlato).</p>
+                                        </div>
+                                        <div class="hitl-example-step">
+                                            <span class="step-badge">Etapa 3 — Decisão</span>
+                                            <p>17 candidatos avançam (15 da IA + 2 resgatados pelo humano). Registro documentado de todas as decisões.</p>
+                                        </div>
+                                    </div>
+                                    <div class="example-result">
+                                        <strong>Resultado:</strong> Velocidade da IA + julgamento humano. Nenhum talento perdido por falha algorítmica.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-section">
+                                <h3>📋 Nosso compromisso</h3>
+                                <div class="commitment-grid">
+                                    <div class="commitment-item">
+                                        <span class="commitment-icon">🔍</span>
+                                        <p><strong>100%</strong> das shortlists revisadas por especialista</p>
+                                    </div>
+                                    <div class="commitment-item">
+                                        <span class="commitment-icon">📝</span>
+                                        <p><strong>100%</strong> das comunicações validadas antes do envio</p>
+                                    </div>
+                                    <div class="commitment-item">
+                                        <span class="commitment-icon">📊</span>
+                                        <p><strong>100%</strong> dos laudos conferidos por psicólogo</p>
+                                    </div>
+                                    <div class="commitment-item">
+                                        <span class="commitment-icon">🔐</span>
+                                        <p><strong>100%</strong> das decisões documentadas e rastreáveis</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="concept-formula">
+                                <h4>Métricas de Governança</h4>
+                                <p><strong>Taxa de Revisão Humana</strong> = (Outputs revisados / Total de outputs IA) × 100</p>
+                                <p style="font-size: 11px; color: #64748b;">Meta: 100% — Nenhuma saída de IA sem validação humana</p>
+                                <p style="margin-top: 12px;"><strong>Taxa de Correção</strong> = (Ajustes humanos / Total revisado) × 100</p>
+                                <p style="font-size: 11px; color: #64748b;">Monitora qualidade da IA. Taxa alta = necessidade de recalibração do modelo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .concept-modal {
+                        display: none;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(15, 39, 68, 0.8);
+                        z-index: 10000;
+                        overflow-y: auto;
+                        padding: 40px 20px;
+                        box-sizing: border-box;
+                        backdrop-filter: blur(4px);
+                    }
+                    .concept-modal-content {
+                        background: white;
+                        max-width: 720px;
+                        margin: 0 auto;
+                        border-radius: 16px;
+                        position: relative;
+                        box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+                        animation: modalSlideIn 0.3s ease;
+                    }
+                    @keyframes modalSlideIn {
+                        from { opacity: 0; transform: translateY(-20px); }
+                        to { opacity: 1; transform: translateY(0); }
+                    }
+                    .concept-modal-close {
+                        position: absolute;
+                        top: 16px;
+                        right: 16px;
+                        width: 36px;
+                        height: 36px;
+                        border: none;
+                        background: #f1f5f9;
+                        border-radius: 50%;
+                        font-size: 24px;
+                        cursor: pointer;
+                        color: #64748b;
+                        transition: all 0.2s;
+                    }
+                    .concept-modal-close:hover {
+                        background: #e2e8f0;
+                        color: #0f2744;
+                    }
+                    .concept-modal-header {
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+                        padding: 32px 32px 24px;
+                        border-bottom: 1px solid #e2e8f0;
+                    }
+                    .concept-modal-icon {
+                        width: 64px;
+                        height: 64px;
+                        border-radius: 16px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-shrink: 0;
+                    }
+                    .concept-modal-body {
+                        padding: 24px 32px 32px;
+                    }
+                    .concept-section {
+                        margin-bottom: 28px;
+                    }
+                    .concept-section h3 {
+                        font-size: 16px;
+                        color: #0f2744;
+                        margin: 0 0 12px;
+                    }
+                    .concept-section p {
+                        color: #475569;
+                        line-height: 1.6;
+                        margin: 0 0 8px;
+                    }
+                    .concept-card {
+                        background: #f8fafc;
+                        border-left: 4px solid #0e7490;
+                        padding: 16px;
+                        border-radius: 0 8px 8px 0;
+                        margin-bottom: 12px;
+                    }
+                    .concept-card strong {
+                        color: #0f2744;
+                        display: block;
+                        margin-bottom: 4px;
+                    }
+                    .concept-card p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                    .concept-example {
+                        background: #f8fafc;
+                        border-radius: 12px;
+                        padding: 20px;
+                    }
+                    .example-scenario {
+                        background: white;
+                        padding: 12px 16px;
+                        border-radius: 8px;
+                        margin-bottom: 16px;
+                        border: 1px solid #e2e8f0;
+                    }
+                    .example-comparison {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 16px;
+                        margin-bottom: 16px;
+                    }
+                    .example-candidate {
+                        background: white;
+                        padding: 16px;
+                        border-radius: 8px;
+                        border: 1px solid #e2e8f0;
+                    }
+                    .candidate-name {
+                        font-weight: 600;
+                        color: #0f2744;
+                        display: block;
+                        margin-bottom: 12px;
+                    }
+                    .candidate-scores {
+                        display: flex;
+                        gap: 12px;
+                        margin-bottom: 12px;
+                    }
+                    .score-item {
+                        flex: 1;
+                        text-align: center;
+                        padding: 8px;
+                        border-radius: 8px;
+                    }
+                    .score-item.good { background: #dcfce7; }
+                    .score-item.warning { background: #fef3c7; }
+                    .score-item.danger { background: #fee2e2; }
+                    .score-label {
+                        display: block;
+                        font-size: 11px;
+                        color: #64748b;
+                        margin-bottom: 2px;
+                    }
+                    .score-value {
+                        display: block;
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: #0f2744;
+                    }
+                    .candidate-insight {
+                        font-size: 13px;
+                        color: #64748b;
+                        margin: 0;
+                    }
+                    .example-result {
+                        background: #dcfce7;
+                        padding: 12px 16px;
+                        border-radius: 8px;
+                        color: #166534;
+                        font-size: 14px;
+                    }
+                    .score-guide {
+                        display: grid;
+                        gap: 16px;
+                    }
+                    .guide-item strong {
+                        display: block;
+                        color: #0f2744;
+                        margin-bottom: 8px;
+                    }
+                    .guide-scale {
+                        display: flex;
+                        gap: 8px;
+                        flex-wrap: wrap;
+                    }
+                    .scale-item {
+                        font-size: 12px;
+                        padding: 6px 12px;
+                        border-radius: 20px;
+                    }
+                    .scale-item.good { background: #dcfce7; color: #166534; }
+                    .scale-item.warning { background: #fef3c7; color: #92400e; }
+                    .scale-item.danger { background: #fee2e2; color: #dc2626; }
+                    .concept-formula {
+                        background: #0f2744;
+                        color: white;
+                        padding: 20px;
+                        border-radius: 12px;
+                        margin-top: 24px;
+                    }
+                    .concept-formula h4 {
+                        margin: 0 0 12px;
+                        font-size: 14px;
+                        color: #22d3ee;
+                    }
+                    .concept-formula p {
+                        color: #e2e8f0;
+                        margin: 0 0 4px;
+                        font-family: monospace;
+                        font-size: 13px;
+                    }
+                    .shield-layers {
+                        display: grid;
+                        gap: 12px;
+                    }
+                    .shield-layer {
+                        display: flex;
+                        gap: 16px;
+                        align-items: flex-start;
+                        background: #f8fafc;
+                        padding: 16px;
+                        border-radius: 8px;
+                    }
+                    .layer-number {
+                        width: 28px;
+                        height: 28px;
+                        background: #0e7490;
+                        color: white;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 600;
+                        font-size: 14px;
+                        flex-shrink: 0;
+                    }
+                    .layer-content strong {
+                        color: #0f2744;
+                        display: block;
+                        margin-bottom: 4px;
+                    }
+                    .layer-content p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                    .bias-example {
+                        display: grid;
+                        gap: 16px;
+                    }
+                    .bias-before, .bias-after {
+                        background: white;
+                        padding: 16px;
+                        border-radius: 8px;
+                        border: 1px solid #e2e8f0;
+                    }
+                    .bias-label {
+                        display: block;
+                        font-weight: 600;
+                        margin-bottom: 8px;
+                        font-size: 13px;
+                    }
+                    .bias-text {
+                        font-style: italic;
+                        color: #475569;
+                        margin: 0 0 8px;
+                        padding: 12px;
+                        background: #f8fafc;
+                        border-radius: 6px;
+                    }
+                    .bias-problem {
+                        color: #dc2626;
+                        font-size: 13px;
+                    }
+                    .bias-solution {
+                        color: #166534;
+                        font-size: 13px;
+                    }
+                    .hitl-flow {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 12px;
+                        flex-wrap: wrap;
+                        margin: 16px 0;
+                    }
+                    .hitl-step {
+                        text-align: center;
+                        background: #f8fafc;
+                        padding: 16px;
+                        border-radius: 12px;
+                        min-width: 140px;
+                    }
+                    .hitl-icon {
+                        font-size: 32px;
+                        margin-bottom: 8px;
+                    }
+                    .hitl-content strong {
+                        display: block;
+                        color: #0f2744;
+                        margin-bottom: 4px;
+                    }
+                    .hitl-content p {
+                        margin: 0;
+                        font-size: 12px;
+                        color: #64748b;
+                    }
+                    .hitl-arrow {
+                        font-size: 24px;
+                        color: #0e7490;
+                    }
+                    .hitl-example {
+                        display: grid;
+                        gap: 12px;
+                        margin: 16px 0;
+                    }
+                    .hitl-example-step {
+                        background: white;
+                        padding: 16px;
+                        border-radius: 8px;
+                        border: 1px solid #e2e8f0;
+                    }
+                    .step-badge {
+                        display: inline-block;
+                        background: #0e7490;
+                        color: white;
+                        font-size: 11px;
+                        font-weight: 600;
+                        padding: 4px 10px;
+                        border-radius: 20px;
+                        margin-bottom: 8px;
+                    }
+                    .hitl-example-step p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                    .commitment-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 12px;
+                    }
+                    .commitment-item {
+                        background: #f8fafc;
+                        padding: 16px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+                    .commitment-icon {
+                        font-size: 24px;
+                    }
+                    .commitment-item p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                    @media (max-width: 640px) {
+                        .example-comparison { grid-template-columns: 1fr; }
+                        .commitment-grid { grid-template-columns: 1fr; }
+                        .hitl-flow { flex-direction: column; }
+                        .hitl-arrow { transform: rotate(90deg); }
+                        .concept-modal-header { flex-direction: column; text-align: center; }
+                        .concept-modal-body { padding: 20px; }
+                    }
+                </style>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Perguntas frequentes</span>
+                    <h2 class="section-title">O que o CFO e o RH vão perguntar</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Por que vocês são diferentes de um headhunter tradicional?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Headhunters tradicionais focam em networking e indicações. Nós combinamos isso com método estruturado, indicadores quantificáveis (PCFI, RRI) e IA responsável para reduzir vieses e acelerar triagem. A decisão continua humana – só que mais informada.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Como a IA entra sem vazar dados sensíveis?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Usamos IA para tarefas específicas: análise de linguagem, síntese de informações públicas, sugestão de perguntas. Dados sensíveis de candidatos ficam em ambiente seguro e não alimentam modelos externos. Tudo registrado em log (PromptOps) para auditoria. LGPD é pré-requisito, não diferencial.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Como vocês evitam vieses no processo?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Três camadas: (1) Bias Shield revisa linguagem de job descriptions e comunicações; (2) Scorecards estruturados com critérios pré-definidos; (3) Toda saída de IA é revisada por humano antes de seguir. Não eliminamos vieses – mas reduzimos significativamente.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Como medimos sucesso?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Três métricas principais: (1) Time-to-hire em dias; (2) Retenção em 12 meses; (3) Avaliação de desempenho no primeiro ciclo. Acompanhamos os check-ins 30/60/90 para corrigir rota cedo se necessário.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Quais os prazos e etapas típicas?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Prazo típico de 15 a 20 dias para todos os formatos. São 7 etapas claras: kickoff, perfil, hunting, entrevistas, laudos, comitê e onboarding. Cronograma definido no kickoff.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            E se a contratação não der certo?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Nosso foco é reduzir esse risco ao máximo (por isso PCFI, RRI e onboarding estruturado). Mas se acontecer nos primeiros meses, discutimos condições de garantia que variam por contrato. O importante: acompanhamos de perto para detectar sinais cedo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost of Inaction -->
+        <section style="padding: 48px 0;">
+            <div class="container">
+                <div style="background: var(--color-bg-dark); border-radius: var(--radius-lg); padding: 48px; max-width: 800px; margin: 0 auto;">
+                    <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 16px; color: #ffffff;">O custo de não agir</h3>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9375rem; line-height: 1.7;">
+                        Uma contratação executiva errada custa, em média, 2 a 3x o salário anual da posição – entre recrutamento, onboarding, impacto em time e nova busca. Sem contar o custo invisível: decisões adiadas, cultura fragilizada, talentos que saem. 
+                        <br><br>
+                        Não é sobre perfeição. É sobre reduzir risco com método.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="cta-section" id="contato">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>Vamos conversar sobre sua próxima contratação?</h2>
+                    <p>Diagnóstico curto, sem compromisso. Entendemos sua necessidade e indicamos se faz sentido trabalhar juntos.</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo" class="btn btn-primary">
+                            Agendar diagnóstico (20 min)
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/5531924147491" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="cta-secondary-links">
+                        <a href="mailto:(EMAIL)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Enviar e-mail
+                        </a>
+                        <a href="https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Ver agenda disponível
+                        </a>
+                        <button onclick="copyB2BSummary()" style="background: none; border: none; cursor: pointer; color: var(--color-text-muted); font-size: 0.875rem; display: flex; align-items: center; gap: 8px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            Copiar resumo para encaminhar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hosting Instructions (visible only in source) -->
+        <section class="hosting-section" style="display: none;" id="hosting-instructions">
+            <div class="container">
+                <h3>Como usar/hostear este arquivo</h3>
+                <ol>
+                    <li><strong>GitHub Pages:</strong> Crie um repositório, faça upload deste arquivo como <code>index.html</code>, vá em Settings > Pages e ative.</li>
+                    <li><strong>Vercel:</strong> Faça upload do arquivo em um novo projeto. Deploy automático.</li>
+                    <li><strong>Netlify:</strong> Arraste o arquivo para o dashboard. Publicado em segundos.</li>
+                    <li><strong>Localmente:</strong> Abra o arquivo diretamente no navegador para visualizar.</li>
+                </ol>
+                <p style="margin-top: 16px; color: var(--color-text-subtle); font-size: 0.875rem;">
+                    Substitua os placeholders https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo, https://wa.me/5531924147491, (EMAIL), https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo pelos seus links reais antes de publicar.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <div class="nav-logo-icon">
+                            <span class="circle circle-1"></span>
+                            <span class="circle circle-2"></span>
+                        </div>
+                        <div class="nav-logo-text">
+                            <span class="brand-name">NEXO <span class="ia">IA</span></span>
+                            <span class="brand-tagline">Talentos</span>
+                        </div>
+                    </a>
+                    <p class="footer-tagline">"O futuro vai premiar quem souber humanizar a tecnologia."</p>
+                </div>
+                <div class="footer-legal">
+                    <p>IA responsável. Decisões humanas.</p>
+                    <p>Dados tratados conforme LGPD. Nenhuma decisão é 100% automatizada.</p>
+                    <div class="footer-badges">
+                        <span class="footer-badge footer-badge-clickable" onclick="openModal('lgpdModal')">LGPD Compliance</span>
+                        <span class="footer-badge footer-badge-clickable" onclick="openModal('biasModal')">Bias Shield</span>
+                        <span class="footer-badge footer-badge-clickable" onclick="openModal('promptopsModal')">PromptOps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal LGPD Compliance -->
+    <div id="lgpdModal" class="concept-modal" onclick="if(event.target === this) closeModal('lgpdModal')">
+        <div class="concept-modal-content">
+            <button class="concept-modal-close" onclick="closeModal('lgpdModal')">&times;</button>
+            
+            <div class="concept-modal-header">
+                <div class="concept-modal-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="32" height="32">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 style="margin: 0; color: #0f2744;">LGPD Compliance</h2>
+                    <p style="margin: 4px 0 0; color: #64748b; font-size: 14px;">Lei Geral de Proteção de Dados — Como protegemos informações</p>
+                </div>
+            </div>
+
+            <div class="concept-modal-body">
+                <div class="concept-section">
+                    <h3>🔤 O que é a LGPD?</h3>
+                    <div class="concept-card">
+                        <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</strong>
+                        <p>Legislação brasileira que regula a coleta, armazenamento, tratamento e compartilhamento de dados pessoais, garantindo direitos aos titulares e impondo obrigações às empresas.</p>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 Por que é importante no recrutamento?</h3>
+                    <p>Processos seletivos envolvem dados sensíveis: currículos, histórico profissional, avaliações comportamentais, informações de contato. A LGPD exige que esses dados sejam tratados com:</p>
+                    <ul style="margin: 12px 0; padding-left: 20px; color: #475569;">
+                        <li><strong>Finalidade específica:</strong> Usar dados apenas para o processo seletivo</li>
+                        <li><strong>Necessidade:</strong> Coletar apenas o essencial</li>
+                        <li><strong>Transparência:</strong> Informar como os dados serão usados</li>
+                        <li><strong>Segurança:</strong> Proteger contra acessos não autorizados</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🛡️ Como aplicamos LGPD no HeadLeads IA</h3>
+                    <div class="shield-layers">
+                        <div class="shield-layer">
+                            <span class="layer-number">1</span>
+                            <div class="layer-content">
+                                <strong>Consentimento Informado</strong>
+                                <p>Candidatos são informados sobre o uso de IA no processo e consentem expressamente antes de participar.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">2</span>
+                            <div class="layer-content">
+                                <strong>Minimização de Dados</strong>
+                                <p>Coletamos apenas informações necessárias para avaliação. Dados sensíveis (raça, religião, orientação) nunca são usados como critério.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">3</span>
+                            <div class="layer-content">
+                                <strong>Retenção Limitada</strong>
+                                <p>Dados de candidatos não selecionados são anonimizados ou excluídos após período definido (máximo 6 meses).</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">4</span>
+                            <div class="layer-content">
+                                <strong>Direito de Acesso</strong>
+                                <p>Candidatos podem solicitar acesso, correção ou exclusão de seus dados a qualquer momento.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">5</span>
+                            <div class="layer-content">
+                                <strong>Segurança Técnica</strong>
+                                <p>Criptografia em trânsito e em repouso. Acesso restrito por perfil. Logs de auditoria completos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>📊 Exemplo Prático</h3>
+                    <div class="concept-example">
+                        <div class="example-scenario">
+                            <strong>Cenário:</strong> Processo seletivo para Coordenador com 50 candidatos.
+                        </div>
+                        <div class="hitl-example">
+                            <div class="hitl-example-step">
+                                <span class="step-badge">Início</span>
+                                <p>Candidatos recebem termo de consentimento explicando: uso de IA para triagem, critérios avaliados, tempo de retenção dos dados, canais para exercer direitos.</p>
+                            </div>
+                            <div class="hitl-example-step">
+                                <span class="step-badge">Durante</span>
+                                <p>Apenas dados relevantes são processados. Informações como foto, idade, estado civil não entram nos critérios de avaliação algorítmica.</p>
+                            </div>
+                            <div class="hitl-example-step">
+                                <span class="step-badge">Após</span>
+                                <p>Candidato contratado: dados migram para RH do cliente. Não selecionados: recebem feedback e opção de manter currículo em banco ou solicitar exclusão.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>✅ Direitos garantidos aos candidatos</h3>
+                    <div class="commitment-grid">
+                        <div class="commitment-item">
+                            <span class="commitment-icon">📋</span>
+                            <p><strong>Acesso:</strong> Saber quais dados temos</p>
+                        </div>
+                        <div class="commitment-item">
+                            <span class="commitment-icon">✏️</span>
+                            <p><strong>Correção:</strong> Atualizar informações</p>
+                        </div>
+                        <div class="commitment-item">
+                            <span class="commitment-icon">🗑️</span>
+                            <p><strong>Exclusão:</strong> Solicitar remoção</p>
+                        </div>
+                        <div class="commitment-item">
+                            <span class="commitment-icon">🚫</span>
+                            <p><strong>Oposição:</strong> Recusar uso de IA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-formula">
+                    <h4>Base Legal Utilizada</h4>
+                    <p><strong>Art. 7º, I e V da LGPD</strong></p>
+                    <p style="font-size: 11px; color: #64748b;">Consentimento do titular (I) e execução de contrato/procedimentos preliminares (V) — candidato participa voluntariamente do processo seletivo.</p>
+                    <p style="margin-top: 12px;"><strong>Art. 20 — Decisões automatizadas</strong></p>
+                    <p style="font-size: 11px; color: #64748b;">Garantimos revisão humana de decisões. Candidato pode solicitar explicação sobre critérios utilizados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal PromptOps -->
+    <div id="promptopsModal" class="concept-modal" onclick="if(event.target === this) closeModal('promptopsModal')">
+        <div class="concept-modal-content">
+            <button class="concept-modal-close" onclick="closeModal('promptopsModal')">&times;</button>
+            
+            <div class="concept-modal-header">
+                <div class="concept-modal-icon" style="background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="32" height="32">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 style="margin: 0; color: #0f2744;">PromptOps</h2>
+                    <p style="margin: 4px 0 0; color: #64748b; font-size: 14px;">Prompt Operations — Engenharia de instruções para IA confiável</p>
+                </div>
+            </div>
+
+            <div class="concept-modal-body">
+                <div class="concept-section">
+                    <h3>🔤 O que é PromptOps?</h3>
+                    <div class="concept-card">
+                        <strong>PromptOps — Prompt Operations</strong>
+                        <p>Disciplina que combina engenharia de prompts com práticas de operações (DevOps). Envolve criar, testar, versionar e monitorar as instruções dadas à IA para garantir resultados consistentes e confiáveis.</p>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🎯 Por que é importante?</h3>
+                    <p>A qualidade das respostas de uma IA depende diretamente da qualidade das instruções (prompts) que ela recebe. PromptOps garante:</p>
+                    <ul style="margin: 12px 0; padding-left: 20px; color: #475569;">
+                        <li><strong>Consistência:</strong> Mesma entrada = mesma qualidade de saída</li>
+                        <li><strong>Rastreabilidade:</strong> Saber qual versão do prompt gerou cada resultado</li>
+                        <li><strong>Melhoria contínua:</strong> Testar e otimizar prompts com dados reais</li>
+                        <li><strong>Governança:</strong> Controle sobre o que a IA pode e não pode fazer</li>
+                    </ul>
+                </div>
+
+                <div class="concept-section">
+                    <h3>⚙️ Como aplicamos PromptOps no HeadLeads IA</h3>
+                    <div class="shield-layers">
+                        <div class="shield-layer">
+                            <span class="layer-number">1</span>
+                            <div class="layer-content">
+                                <strong>Biblioteca de Prompts Validados</strong>
+                                <p>Cada etapa do processo usa prompts testados e aprovados. Não usamos instruções genéricas — cada prompt é específico para recrutamento executivo.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">2</span>
+                            <div class="layer-content">
+                                <strong>Versionamento</strong>
+                                <p>Toda alteração em prompts é documentada com versão, data e motivo. Podemos reverter se necessário e rastrear qual versão gerou cada output.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">3</span>
+                            <div class="layer-content">
+                                <strong>Guardrails (Barreiras de Proteção)</strong>
+                                <p>Prompts incluem instruções explícitas do que a IA NÃO deve fazer: não inventar informações, não usar critérios discriminatórios, não tomar decisões finais.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">4</span>
+                            <div class="layer-content">
+                                <strong>Testes A/B</strong>
+                                <p>Novas versões de prompts são testadas em paralelo antes de substituir as atuais. Comparamos qualidade, consistência e tempo de resposta.</p>
+                            </div>
+                        </div>
+                        <div class="shield-layer">
+                            <span class="layer-number">5</span>
+                            <div class="layer-content">
+                                <strong>Monitoramento Contínuo</strong>
+                                <p>Acompanhamos métricas de qualidade das saídas. Se detectamos degradação, investigamos e corrigimos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>📊 Exemplo Prático</h3>
+                    <div class="concept-example">
+                        <div class="example-scenario">
+                            <strong>Cenário:</strong> IA analisa currículo para vaga de Gerente de Operações.
+                        </div>
+                        <div class="bias-example">
+                            <div class="bias-before">
+                                <span class="bias-label">❌ Prompt GENÉRICO (sem PromptOps)</span>
+                                <p class="bias-text">"Analise este currículo e diga se o candidato é bom."</p>
+                                <span class="bias-problem">Problema: Vago, sem critérios, resultados inconsistentes, pode gerar vieses.</span>
+                            </div>
+                            <div class="bias-after">
+                                <span class="bias-label">✅ Prompt com PromptOps</span>
+                                <p class="bias-text">"Analise o currículo considerando APENAS: (1) experiência em gestão de equipes operacionais, (2) resultados quantificáveis em eficiência, (3) conhecimento em metodologias lean/six sigma. NÃO considere: idade, gênero, foto, nome da universidade. Retorne score 0-100 para cada critério com justificativa baseada em evidências do currículo. Se informação não estiver disponível, indique 'não informado' em vez de inferir."</p>
+                                <span class="bias-solution">Resultado: Critérios claros, sem vieses, justificativas rastreáveis, consistência entre análises.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>🔐 Nossos Guardrails</h3>
+                    <div class="commitment-grid">
+                        <div class="commitment-item">
+                            <span class="commitment-icon">🚫</span>
+                            <p><strong>Não inventar:</strong> Só usar dados do currículo</p>
+                        </div>
+                        <div class="commitment-item">
+                            <span class="commitment-icon">⚖️</span>
+                            <p><strong>Não discriminar:</strong> Ignorar dados sensíveis</p>
+                        </div>
+                        <div class="commitment-item">
+                            <span class="commitment-icon">📝</span>
+                            <p><strong>Justificar:</strong> Toda conclusão com evidência</p>
+                        </div>
+                        <div class="commitment-item">
+                            <span class="commitment-icon">🛑</span>
+                            <p><strong>Não decidir:</strong> Apenas sugerir, humano decide</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-formula">
+                    <h4>Métricas de Qualidade PromptOps</h4>
+                    <p><strong>Taxa de Consistência</strong> = (Outputs dentro do padrão / Total de outputs) × 100</p>
+                    <p style="font-size: 11px; color: #64748b;">Meta: >95% — Mesmo tipo de entrada deve gerar outputs com estrutura e qualidade similares.</p>
+                    <p style="margin-top: 12px;"><strong>Taxa de Alucinação</strong> = (Outputs com informações inventadas / Total revisado) × 100</p>
+                    <p style="font-size: 11px; color: #64748b;">Meta: <1% — Monitoramos se a IA está inventando dados não presentes nos documentos fonte.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastMessage">Copiado!</span>
+    </div>
+
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Mobile Navigation
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isOpen = item.classList.contains('open');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    item.classList.add('open');
+                }
+                
+                button.setAttribute('aria-expanded', !isOpen);
+            });
+        });
+
+        // Quiz Logic
+        let currentQuestion = 1;
+        const totalQuestions = 4;
+        const answers = {};
+
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.quiz-question');
+                const questionNum = parseInt(question.dataset.question);
+                
+                // Remove selected from siblings
+                question.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+                
+                // Select this option
+                this.classList.add('selected');
+                
+                // Store answer
+                answers[questionNum] = this.dataset.value;
+                
+                // Move to next question after delay
+                setTimeout(() => {
+                    if (questionNum < totalQuestions) {
+                        goToQuestion(questionNum + 1);
+                    } else {
+                        showResult();
+                    }
+                }, 300);
+            });
+        });
+
+        function goToQuestion(num) {
+            document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+            document.querySelector(`.quiz-question[data-question="${num}"]`).classList.add('active');
+            
+            // Update progress
+            document.querySelectorAll('.quiz-progress-step').forEach((step, i) => {
+                step.classList.toggle('active', i < num);
+            });
+            
+            currentQuestion = num;
+        }
+
+        function showResult() {
+            document.getElementById('quizQuestions').style.display = 'none';
+            document.getElementById('quizResult').classList.add('active');
+            document.querySelector('.quiz-progress').style.display = 'none';
+            
+            // Generate recommendation based on answers
+            let format = '';
+            let urgency = '';
+            let steps = '';
+            
+            // Format recommendation
+            if (answers[1] === 'gerente-senior' && answers[3] === 'alta') {
+                format = 'Liderança Estratégica Premium – processo com governança reforçada, ideal para posições de alta senioridade e confidencialidade.';
+            } else if (answers[1] === 'gerente-senior' || answers[1] === 'gerente') {
+                format = 'Liderança Estratégica – equilíbrio entre profundidade de análise e agilidade no processo.';
+            } else {
+                format = 'Liderança Tática – foco em identificar profissionais com potencial de crescimento e fit cultural.';
+            }
+            
+            // Urgency
+            if (answers[2] === 'urgente') {
+                urgency = 'Alta – recomendamos iniciar o kickoff esta semana para cumprir seu prazo.';
+            } else if (answers[2] === 'moderada') {
+                urgency = 'Moderada – temos margem confortável. Sugerimos diagnóstico nas próximas 2 semanas.';
+            } else if (answers[2] === 'mapeamento') {
+                urgency = 'Exploratória – podemos começar com um mapeamento de mercado sem compromisso de contratação.';
+            } else {
+                urgency = 'Planejada – tempo ideal para um processo profundo e bem estruturado.';
+            }
+            
+            // Steps based on past failures
+            if (answers[4] === 'sim') {
+                steps = 'Recomendamos fortemente incluir análise PCFI (fit cultural) e RRI (risco de retenção) para evitar repetir padrões. Agende o diagnóstico para entendermos o que não funcionou antes.';
+            } else if (answers[4] === 'uma') {
+                steps = 'Importante mapear o que levou à saída anterior. Nosso processo inclui indicadores preditivos (PCFI/RRI) para reduzir esse risco.';
+            } else {
+                steps = 'Ótimo histórico! Nosso processo vai ajudar a manter esse padrão com método e indicadores claros.';
+            }
+            
+            document.getElementById('resultFormat').textContent = format;
+            document.getElementById('resultUrgency').textContent = urgency;
+            document.getElementById('resultSteps').textContent = steps;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 1;
+            Object.keys(answers).forEach(key => delete answers[key]);
+            
+            document.getElementById('quizQuestions').style.display = 'block';
+            document.getElementById('quizResult').classList.remove('active');
+            document.querySelector('.quiz-progress').style.display = 'flex';
+            
+            document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+            document.querySelector('.quiz-question[data-question="1"]').classList.add('active');
+            
+            document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+            
+            document.querySelectorAll('.quiz-progress-step').forEach((step, i) => {
+                step.classList.toggle('active', i === 0);
+            });
+        }
+
+        // Copy B2B Summary
+        function copyB2BSummary() {
+            const summary = `NEXO IA Talentos – Recrutamento Executivo
+
+Recrutamos líderes que ficam e entregam, combinando IA responsável com avaliação humana profunda.
+
+✓ Método HeadLeads IA com indicadores PCFI (fit cultural) e RRI (risco de retenção)
+✓ Governança transparente e LGPD compliance
+✓ Acompanhamento 30/60/90 dias pós-contratação
+
+Formatos:
+• Liderança Operacional (15-20 dias)
+• Coordenação & Gerência (15-20 dias)
+• Gerência Sênior (15-20 dias)
+
+Agende um diagnóstico de 20 minutos sem compromisso.
+
+"IA responsável. Decisões humanas."`;
+
+            navigator.clipboard.writeText(summary).then(() => {
+                showToast('Resumo copiado! Cole no e-mail ou chat.');
+            });
+        }
+
+        // Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('open');
+                }
+            });
+        });
+
+        // Modal functions for concept explanations
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.concept-modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
+    <!--
+    ============================================
+    COMO USAR / HOSTEAR ESTE ARQUIVO
+    ============================================
+    
+    1. GITHUB PAGES:
+       - Crie um novo repositório no GitHub
+       - Faça upload deste arquivo como "index.html"
+       - Vá em Settings > Pages
+       - Selecione a branch main e salve
+       - Seu site estará disponível em: username.github.io/nome-repo
+    
+    2. VERCEL:
+       - Acesse vercel.com e faça login
+       - Clique em "New Project"
+       - Faça upload deste arquivo ou conecte ao GitHub
+       - Deploy automático em segundos
+    
+    3. NETLIFY:
+       - Acesse netlify.com e faça login
+       - Arraste este arquivo para o dashboard
+       - Publicado instantaneamente com URL automática
+    
+    4. LOCALMENTE:
+       - Salve o arquivo com extensão .html
+       - Abra diretamente no navegador (duplo clique)
+    
+    ANTES DE PUBLICAR:
+    Substitua os placeholders pelos seus links reais:
+    - https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo → seu link de agendamento
+    - https://wa.me/5531924147491 → wa.me/seu-numero
+    - (EMAIL) → seu email
+    - https://calendly.com/viniciusgranatos/diagnostico-recrutamento-executivo → seu calendly (se usar)
+    ============================================
+    -->
+</body>
+</html>
